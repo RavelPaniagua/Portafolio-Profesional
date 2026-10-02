@@ -1,0 +1,49 @@
+@import "tailwindcss" source("../");
+
+@theme {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --color-paper: #f4f6f2;
+  --color-ink: #192723;
+  --color-muted: #65726d;
+  --color-line: #d8e0da;
+  --color-lime: #d3fc62;
+  --color-teal: #14776f;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply m-0 bg-paper font-sans text-ink antialiased;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  button {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .section-wrap {
+    @apply mx-auto w-[min(1240px,calc(100%-96px))];
+  }
+
+  .site-header {
+    @apply sticky top-0 z-50 flex items-center justify-between;
+  }
+
+  .hero {
+    @apply relative grid items-center;
+  }
+
+  .project-list {
+    @apply grid grid-cols-2 gap-[18px];
+  }
+}
