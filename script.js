@@ -1,5 +1,26 @@
 document.documentElement.classList.add("js");
 
+const themeButton = document.querySelector(".theme-toggle");
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+const savedTheme = localStorage.getItem("portfolio-theme");
+
+function setTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.dataset.theme = theme;
+  themeButton.setAttribute("aria-label", isDark ? "Activar modo claro" : "Activar modo oscuro");
+  themeButton.setAttribute("title", isDark ? "Activar modo claro" : "Activar modo oscuro");
+  themeButton.firstElementChild.textContent = isDark ? "☀" : "☾";
+  themeMeta.setAttribute("content", isDark ? "#141a17" : "#f4f6f2");
+}
+
+setTheme(savedTheme === "dark" ? "dark" : "light");
+
+themeButton.addEventListener("click", () => {
+  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  localStorage.setItem("portfolio-theme", nextTheme);
+  setTheme(nextTheme);
+});
+
 const menuButton = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
 
